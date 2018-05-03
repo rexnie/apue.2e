@@ -1,7 +1,8 @@
 # make module in figure
 #make -f m.mk fig1.3
 
-WKDIR=/home/rex/work/apue.2e
+cur_mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+WKDIR := $(patsubst %/, %, $(dir $(cur_mkfile_path)))
 CC=gcc
 COMPILE.c=$(CC) $(CFLAGS) $(CPPFLAGS) -c
 LINK.c=$(CC) $(CFLAGS) $(CPPFLAGS) $(LDDIR) $(LDFLAGS)
